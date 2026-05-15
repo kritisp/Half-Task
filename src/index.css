@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {
+  /* Nav Glassmorphism */
+  .nav-glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(29, 181, 155, 0.1);
+  }
+  .dark .nav-glass {
+    background: rgba(8, 47, 38, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Input Styling */
+  .custom-input {
+    @apply transition-all duration-200;
+  }
+  .custom-input:focus {
+    /* We'll use specific focus rings in components via Tailwind utilities, 
+       but for base generic custom-input we can set a fallback */
+    border-color: #1db59b;
+    box-shadow: 0 0 0 1px #1db59b;
+    outline: none;
+  }
+  .dark .custom-input:focus {
+    border-color: #4bd4bc;
+    box-shadow: 0 0 0 1px #4bd4bc;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(17, 28, 51, 0.15); border-radius: 10px; }
+.dark ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); }
+
+/* Toggle switch */
+.toggle-checkbox:checked { right: 0; }
+/* Theme specific overrides will be done using inline Tailwind or specific classes in components */
