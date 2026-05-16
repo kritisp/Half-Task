@@ -389,9 +389,9 @@ export default function DriverPage() {
                   <button type="submit" className="w-full py-4 rounded-full bg-brand-driverAccent text-white font-bold text-sm hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] transition-all duration-300 hover:opacity-90">
                       Create Driver Profile
                   </button>
-                  <button type="button" className="w-full py-4 rounded-full border border-brand-driverAccent bg-transparent text-brand-driverAccent dark:text-[#7dd3fc] font-bold text-sm hover:bg-brand-driverLight dark:hover:bg-brand-driverAccent/10 transition-all duration-300">
+                  <Link to="/client/dashboard" className="w-full py-4 rounded-full border border-brand-driverAccent dark:border-[#7dd3fc] bg-transparent text-brand-driverAccent dark:text-[#7dd3fc] font-bold text-sm hover:bg-brand-driverAccent/5 dark:hover:bg-[#7dd3fc]/10 transition-all duration-300 flex justify-center items-center">
                       Already have an account? Log In
-                  </button>
+                  </Link>
               </div>
 
           </form>

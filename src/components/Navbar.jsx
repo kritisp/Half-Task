@@ -65,7 +65,7 @@ export default function Navbar() {
           Browse
           <svg className="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
         </Link>
-        <Link to="#" className="hover:text-brand-teal dark:hover:text-brand-darkAccent transition-colors">How it Works</Link>
+        <a href="/#how-it-works" className="hover:text-brand-teal dark:hover:text-brand-darkAccent transition-colors">How it Works</a>
       </div>
 
       <div className="flex items-center gap-3">
@@ -75,10 +75,10 @@ export default function Navbar() {
         >
           <i className={`fa-solid ${isDark ? 'fa-sun' : 'fa-moon'} text-sm`}></i>
         </button>
-        <Link to="#" className="hidden sm:flex px-5 py-2 rounded-full border border-brand-teal dark:border-brand-darkAccent text-brand-teal dark:text-brand-darkAccent font-semibold text-sm hover:bg-brand-teal/5 dark:hover:bg-brand-darkAccent/10 transition-colors">
+        <Link to="/client" className="hidden sm:flex px-5 py-2 rounded-full border border-brand-teal dark:border-brand-darkAccent text-brand-teal dark:text-brand-darkAccent font-semibold text-sm hover:bg-brand-teal/5 dark:hover:bg-brand-darkAccent/10 transition-colors">
           Login
         </Link>
-        <Link to="#" className="hidden sm:flex px-5 py-2 rounded-full bg-brand-teal dark:bg-brand-darkAccent text-white dark:text-brand-darkBg font-semibold text-sm hover:bg-brand-tealDark dark:hover:bg-brand-darkAccent/90 transition-colors shadow-sm shadow-brand-teal/20 dark:shadow-brand-darkAccent/20">
+        <Link to="/service" className="hidden sm:flex px-5 py-2 rounded-full bg-brand-teal dark:bg-brand-darkAccent text-white dark:text-brand-darkBg font-semibold text-sm hover:bg-brand-tealDark dark:hover:bg-brand-darkAccent/90 transition-colors shadow-sm shadow-brand-teal/20 dark:shadow-brand-darkAccent/20">
           Register
         </Link>
       </div>

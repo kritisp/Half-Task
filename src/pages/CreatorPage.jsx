@@ -298,11 +298,11 @@ export default function CreatorPage() {
                   <button type="submit" className="w-full py-4 rounded-full bg-brand-creatorAccent text-white font-bold text-sm hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] transition-all duration-300 hover:opacity-90">
                       Create Creator Profile
                   </button>
-                  <button type="button" className="w-full py-4 rounded-full border border-brand-creatorAccent bg-transparent text-brand-creatorAccent dark:text-[#a78bfa] font-bold text-sm hover:bg-brand-creatorLight dark:hover:bg-brand-creatorAccent/10 transition-all duration-300">
+                  <Link to="/client/dashboard" className="w-full py-4 rounded-full border border-brand-creatorAccent dark:border-[#a78bfa] bg-transparent text-brand-creatorAccent dark:text-[#a78bfa] font-bold text-sm hover:bg-brand-creatorAccent/5 dark:hover:bg-[#a78bfa]/10 transition-all duration-300 flex justify-center items-center">
                       Already have an account? Log In
-                  </button>
+                  </Link>
                   <p className="text-center mt-4 text-xs text-slate-500 dark:text-slate-400 transition-colors">
-                      Running a business? <a href="#" className="text-brand-creatorAccent dark:text-[#a78bfa] hover:underline font-semibold">Register as Business instead</a>
+                      Running a business? <Link to="/client" className="text-brand-creatorAccent dark:text-[#a78bfa] hover:underline font-semibold">Register as Business instead</Link>
                   </p>
               </div>
 

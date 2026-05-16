@@ -1,6 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function ClientPage() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/client/dashboard');
+  };
+
   return (
     <div className="relative z-10 w-full min-h-screen flex flex-col items-center pt-10 pb-16 px-5">
       
@@ -30,7 +37,7 @@ export default function ClientPage() {
               <p className="text-sm text-slate-500 dark:text-slate-300 transition-colors">Post campaigns and find creators for your brand</p>
           </header>
 
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
 
               {/* ================= SECTION 1: ACCOUNT DETAILS ================= */}
               <section>
@@ -100,9 +107,9 @@ export default function ClientPage() {
                   <button type="submit" className="w-full py-4 rounded-full bg-brand-teal dark:bg-brand-darkAccent text-white dark:text-brand-darkBg font-bold text-sm hover:shadow-[0_0_20px_rgba(29,181,155,0.4)] dark:hover:shadow-[0_0_20px_rgba(75,212,188,0.4)] transition-all duration-300 hover:opacity-90">
                       Set up Client/Business' Profile
                   </button>
-                  <button type="button" className="w-full py-4 rounded-full border border-brand-teal dark:border-brand-darkAccent bg-transparent text-brand-teal dark:text-brand-darkAccent font-bold text-sm hover:bg-brand-teal/5 dark:hover:bg-brand-darkAccent/10 transition-all duration-300">
+                  <Link to="/client/dashboard" className="w-full py-4 rounded-full border border-brand-teal dark:border-brand-darkAccent bg-transparent text-brand-teal dark:text-brand-darkAccent font-bold text-sm hover:bg-brand-teal/5 dark:hover:bg-brand-darkAccent/10 transition-all duration-300 flex justify-center items-center">
                       Already have an account? Log In
-                  </button>
+                  </Link>
                   <p className="text-center mt-4 text-xs text-slate-500 dark:text-slate-400 transition-colors">
                       Looking to create content? <Link to="/creator" className="text-brand-teal dark:text-brand-darkAccent hover:underline font-semibold">Join as Creator instead</Link>
                   </p>

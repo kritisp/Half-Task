@@ -102,9 +102,8 @@ export default function HomePage() {
 
           </div>
 
-          {/* Login Prompt */}
           <div className="mt-8 text-slate-500 dark:text-slate-300 text-sm animate-fade-in transition-colors duration-300" style={{animationDelay: "0.4s"}}>
-            Already have an account? <a href="#" className="text-brand-teal dark:text-brand-darkAccent font-medium hover:underline transition-colors duration-300">Log in</a>
+            Already have an account? <Link to="/client" className="text-brand-teal dark:text-brand-darkAccent font-medium hover:underline transition-colors duration-300">Log in</Link>
           </div>
         </section>
       </div>
@@ -132,7 +131,7 @@ export default function HomePage() {
       </section>
 
       {/* How it Works */}
-      <section className="w-full py-24 px-6 bg-white dark:bg-brand-darkBg relative transition-colors duration-300">
+      <section id="how-it-works" className="w-full py-24 px-6 bg-white dark:bg-brand-darkBg relative transition-colors duration-300">
         <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
                 <p className="text-xs font-bold text-brand-teal dark:text-brand-darkAccent uppercase tracking-widest mb-3 transition-colors duration-300">How It Works</p>

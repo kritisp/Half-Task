@@ -394,9 +394,9 @@ export default function PhotographyPage() {
                       Create Photography Profile
                   </button>
                   
-                  <button type="button" className="w-full py-4 rounded-full border border-brand-teal dark:border-brand-darkAccent bg-transparent text-brand-teal dark:text-brand-darkAccent font-bold text-sm hover:bg-brand-tealLight dark:hover:bg-brand-darkAccent/10 transition-all duration-300">
+                  <Link to="/client/dashboard" className="w-full py-4 rounded-full border border-brand-teal dark:border-brand-darkAccent bg-transparent text-brand-teal dark:text-brand-darkAccent font-bold text-sm hover:bg-brand-tealLight dark:hover:bg-brand-darkAccent/10 transition-all duration-300 flex justify-center items-center">
                       Already have an account? Log In
-                  </button>
+                  </Link>
               </div>
 
           </form>
