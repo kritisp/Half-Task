@@ -21,7 +21,7 @@ export default function ClientPage() {
                   Client Account
               </div>
               
-              <h1 className="text-3xl font-extrabold text-brand-navy dark:text-white tracking-tight mb-3 transition-colors">Set up Client Profile</h1>
+              <h1 className="text-3xl font-extrabold text-brand-navy dark:text-white tracking-tight mb-3 transition-colors">Set up Client/Business' Profile</h1>
               
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-teal/10 dark:bg-brand-darkAccent/10 border border-brand-teal/20 text-brand-teal dark:text-brand-darkAccent text-xs font-bold mb-4 transition-colors">
                   <i className="fa-solid fa-check"></i> 100% free — no platform fees
@@ -98,7 +98,7 @@ export default function ClientPage() {
               {/* ================= SUBMIT ================= */}
               <div className="pt-8 space-y-4">
                   <button type="submit" className="w-full py-4 rounded-full bg-brand-teal dark:bg-brand-darkAccent text-white dark:text-brand-darkBg font-bold text-sm hover:shadow-[0_0_20px_rgba(29,181,155,0.4)] dark:hover:shadow-[0_0_20px_rgba(75,212,188,0.4)] transition-all duration-300 hover:opacity-90">
-                      Set up Client Profile
+                      Set up Client/Business' Profile
                   </button>
                   <button type="button" className="w-full py-4 rounded-full border border-brand-teal dark:border-brand-darkAccent bg-transparent text-brand-teal dark:text-brand-darkAccent font-bold text-sm hover:bg-brand-teal/5 dark:hover:bg-brand-darkAccent/10 transition-all duration-300">
                       Already have an account? Log In
