@@ -71,13 +71,13 @@ export default function ServicePage() {
             </div>
 
             {/* PHOTOGRAPHY MODULE CARD */}
-            <div className="category-card group/card relative bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-white/5 rounded-3xl p-8 flex flex-col overflow-hidden animate-fade-in-up transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:bg-white dark:hover:bg-[#196e5e] hover:border-orange-400/30 dark:hover:border-orange-400/50 hover:shadow-[0_20px_40px_-10px_rgba(249,115,22,0.15)] dark:hover:shadow-[0_20px_40px_-10px_rgba(249,115,22,0.25)] group-hover/container:not(:hover):opacity-60 group-hover/container:not(:hover):scale-95 group-hover/container:not(:hover):blur-[1px]" style={{animationDelay: "0.2s"}}>
+            <div className="category-card group/card relative bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-white/5 rounded-3xl p-8 flex flex-col overflow-hidden animate-fade-in-up transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:bg-white dark:hover:bg-[#196e5e] hover:border-brand-teal/30 dark:hover:border-brand-teal/50 hover:shadow-[0_20px_40px_-10px_rgba(29,181,155,0.15)] dark:hover:shadow-[0_20px_40px_-10px_rgba(29,181,155,0.25)] group-hover/container:not(:hover):opacity-60 group-hover/container:not(:hover):scale-95 group-hover/container:not(:hover):blur-[1px]" style={{animationDelay: "0.2s"}}>
                 {/* Internal dynamic glow */}
-                <div className="card-glow absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-gradient-to-br from-orange-100 via-amber-50 to-teal-50 dark:from-orange-500/10 dark:via-amber-500/10 dark:to-teal-500/10 blur-3xl opacity-0 group-hover/card:opacity-80 dark:group-hover/card:mix-blend-screen transition-opacity duration-500 pointer-events-none rounded-full"></div>
+                <div className="card-glow absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-gradient-to-br from-brand-teal/20 via-brand-teal/10 to-blue-50 dark:from-brand-teal/10 dark:via-brand-darkAccent/10 dark:to-blue-500/10 blur-3xl opacity-0 group-hover/card:opacity-80 dark:group-hover/card:mix-blend-screen transition-opacity duration-500 pointer-events-none rounded-full"></div>
                 
                 <div className="relative z-10 flex flex-col h-full">
                     {/* Icon */}
-                    <div className="w-16 h-16 rounded-2xl bg-orange-50 dark:bg-orange-500/10 border border-orange-100 dark:border-orange-500/20 flex items-center justify-center text-orange-500 dark:text-orange-400 mb-6 transition-all duration-300 group-hover/card:bg-gradient-to-br group-hover/card:from-[#f97316] group-hover/card:to-[#fbbf24] group-hover/card:text-white group-hover/card:border-transparent group-hover/card:shadow-[0_10px_20px_-5px_rgba(249,115,22,0.4)]">
+                    <div className="w-16 h-16 rounded-2xl bg-brand-teal/10 dark:bg-brand-teal/20 border border-brand-teal/20 dark:border-brand-teal/30 flex items-center justify-center text-brand-teal dark:text-brand-darkAccent mb-6 transition-all duration-300 group-hover/card:bg-gradient-to-br group-hover/card:from-brand-teal group-hover/card:to-brand-darkAccent group-hover/card:text-white group-hover/card:border-transparent group-hover/card:shadow-[0_10px_20px_-5px_rgba(29,181,155,0.4)]">
                         <i className="fa-solid fa-camera-retro text-2xl"></i>
                     </div>
                     
@@ -90,21 +90,21 @@ export default function ServicePage() {
                     {/* Features */}
                     <ul className="space-y-3 mb-10 flex-1">
                         <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-200 font-medium transition-colors duration-300">
-                            <i className="fa-solid fa-circle-check text-orange-500 dark:text-orange-400 mt-0.5"></i>
+                            <i className="fa-solid fa-circle-check text-brand-teal dark:text-brand-darkAccent mt-0.5"></i>
                             Portfolio showcase
                         </li>
                         <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-200 font-medium transition-colors duration-300">
-                            <i className="fa-solid fa-circle-check text-orange-500 dark:text-orange-400 mt-0.5"></i>
+                            <i className="fa-solid fa-circle-check text-brand-teal dark:text-brand-darkAccent mt-0.5"></i>
                             Event & wedding projects
                         </li>
                         <li className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-200 font-medium transition-colors duration-300">
-                            <i className="fa-solid fa-circle-check text-orange-500 dark:text-orange-400 mt-0.5"></i>
+                            <i className="fa-solid fa-circle-check text-brand-teal dark:text-brand-darkAccent mt-0.5"></i>
                             Professional profile
                         </li>
                     </ul>
                     
                     {/* CTA */}
-                    <Link to="/photography" className="w-full py-3.5 rounded-xl border border-orange-200 dark:border-orange-500/30 bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-300 font-semibold text-sm transition-all duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-amber-500 hover:text-white hover:border-transparent hover:shadow-md flex items-center justify-center gap-2 group/btn">
+                    <Link to="/photography" className="w-full py-3.5 rounded-xl border border-brand-teal/20 dark:border-brand-teal/30 bg-brand-teal/5 dark:bg-brand-teal/10 text-brand-teal dark:text-brand-darkAccent font-semibold text-sm transition-all duration-300 hover:bg-gradient-to-r hover:from-brand-teal hover:to-brand-darkAccent hover:text-white hover:border-transparent hover:shadow-md flex items-center justify-center gap-2 group/btn">
                         Continue
                         <i className="fa-solid fa-arrow-right text-xs transition-transform group-hover/btn:translate-x-1"></i>
                     </Link>

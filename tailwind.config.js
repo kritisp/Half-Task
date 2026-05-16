@@ -23,7 +23,7 @@ export default {
           darkCard: '#156153',
           darkAccent: '#4bd4bc',
           // Photography Accents
-          photoAccent: '#f97316',
+          photoAccent: '#1db59b',
           // Driver Accents
           driverAccent: '#0ea5e9',
           driverLight: '#e0f2fe',

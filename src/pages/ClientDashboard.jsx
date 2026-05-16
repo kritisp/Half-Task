@@ -23,10 +23,50 @@ const MOCK_PHOTOGRAPHERS = [
   { id: 6, name: "Pooja Hegde", rating: 4.9, rate: 3000, rateType: "Full Day", specialty: "Fashion", equipment: "Canon R6 Mark II", avatar: "P", campaigns: 54 },
 ];
 
+// MOCK DATA: Bidding System Requests
+export const INITIAL_PROJECT_REQUESTS = [
+  {
+    id: 1,
+    title: "Wedding Photographer Needed",
+    serviceCategory: "photographer",
+    location: "Bhubaneswar",
+    requirements: "Wedding specialty, own lighting",
+    biddingDeadline: "2026-05-20",
+    announcementDate: "2026-05-22",
+    status: "open",
+    quotes: [
+      { providerId: 1, name: "Arjun Verma", amount: 25000, message: "Available for the dates with full drone setup." }
+    ]
+  },
+  {
+    id: 2,
+    title: "Outstation Driver to Puri",
+    serviceCategory: "driver",
+    location: "Bhubaneswar to Puri",
+    requirements: "SUV, Intercity",
+    biddingDeadline: "2026-05-18",
+    announcementDate: "2026-05-19",
+    status: "open",
+    quotes: []
+  }
+];
+
 export default function ClientDashboard() {
   const [isDark, setIsDark] = useState(false);
   const [activeTab, setActiveTab] = useState('all'); // 'all', 'active', 'find'
   const [selectedService, setSelectedService] = useState(null); // null, 'photographer', 'driver'
+  
+  // Bidding Flow State
+  const [projectRequests, setProjectRequests] = useState(INITIAL_PROJECT_REQUESTS);
+  const [isPostingModalOpen, setIsPostingModalOpen] = useState(false);
+  const [postingData, setPostingData] = useState({
+    title: '',
+    serviceCategory: 'driver',
+    location: '',
+    requirements: '',
+    biddingDeadline: '',
+    announcementDate: ''
+  });
   
   // Data State
   const [drivers, setDrivers] = useState([]);
@@ -124,24 +164,89 @@ export default function ClientDashboard() {
   const renderTabContent = () => {
     if (activeTab === 'all') {
       return (
-        <>
-          <div className="mb-2">
-            <p className="text-xs text-slate-500 dark:text-slate-400">Every task you have posted so far</p>
-            <h2 className="text-lg font-bold text-brand-navy dark:text-white mt-1">All Tasks</h2>
-          </div>
-          <div className="bg-white dark:bg-brand-darkCard border border-slate-100 dark:border-white/5 rounded-3xl p-16 flex flex-col items-center justify-center text-center shadow-sm mt-4 transition-colors">
-            <div className="w-12 h-12 mb-4 relative">
-              <i className="fa-solid fa-magnifying-glass text-4xl text-brand-teal dark:text-brand-darkAccent drop-shadow-sm"></i>
+        <div className="animate-fade-in">
+          <div className="mb-6 flex justify-between items-center">
+            <div>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Every task you have posted so far</p>
+              <h2 className="text-xl font-bold text-brand-navy dark:text-white mt-1">My Task Postings</h2>
             </div>
-            <h3 className="text-lg font-bold text-brand-navy dark:text-white mb-2">No tasks yet</h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 max-w-sm">
-              Post a task to find the best talent.
-            </p>
-            <button onClick={() => alert('Post Task flow coming soon!')} className="px-6 py-2.5 bg-brand-teal dark:bg-brand-darkAccent text-white dark:text-brand-darkBg font-semibold text-sm rounded-full shadow-md shadow-brand-teal/20 dark:shadow-brand-darkAccent/20 hover:bg-brand-tealDark dark:hover:bg-brand-darkAccent/90 transition-all">
-              Post a Task
+            <button onClick={() => setIsPostingModalOpen(true)} className="px-5 py-2.5 bg-brand-teal dark:bg-brand-darkAccent text-white dark:text-brand-darkBg font-bold text-sm rounded-full shadow-md shadow-brand-teal/20 dark:shadow-brand-darkAccent/20 hover:bg-brand-tealDark dark:hover:bg-brand-darkAccent/90 transition-all flex items-center gap-2">
+              <i className="fa-solid fa-plus"></i> Post a Task
             </button>
           </div>
-        </>
+          
+          {projectRequests.length === 0 ? (
+            <div className="bg-white dark:bg-brand-darkCard border border-slate-100 dark:border-white/5 rounded-3xl p-16 flex flex-col items-center justify-center text-center shadow-sm transition-colors">
+              <div className="w-12 h-12 mb-4 relative">
+                <i className="fa-solid fa-magnifying-glass text-4xl text-brand-teal dark:text-brand-darkAccent drop-shadow-sm"></i>
+              </div>
+              <h3 className="text-lg font-bold text-brand-navy dark:text-white mb-2">No tasks yet</h3>
+              <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 max-w-sm">Post a task to find the best talent.</p>
+              <button onClick={() => setIsPostingModalOpen(true)} className="px-6 py-2.5 bg-brand-teal dark:bg-brand-darkAccent text-white dark:text-brand-darkBg font-semibold text-sm rounded-full shadow-md hover:bg-brand-tealDark transition-all">
+                Post a Task
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {projectRequests.map(req => (
+                <div key={req.id} className="bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-sm relative overflow-hidden group">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-brand-teal dark:bg-brand-darkAccent"></div>
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 className="text-lg font-bold text-brand-navy dark:text-white">{req.title}</h3>
+                      <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 capitalize">{req.serviceCategory} • {req.location}</p>
+                    </div>
+                    <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${req.status === 'open' ? 'bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400' : 'bg-slate-100 text-slate-600'}`}>
+                      {req.status}
+                    </span>
+                  </div>
+                  
+                  <div className="flex gap-4 mb-4">
+                    <div className="bg-slate-50 dark:bg-white/5 px-4 py-2 rounded-xl flex-1 border border-slate-100 dark:border-white/5">
+                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Bidding Deadline</div>
+                      <div className="text-sm font-semibold text-brand-navy dark:text-slate-200 flex items-center gap-2"><i className="fa-regular fa-clock"></i> {req.biddingDeadline}</div>
+                    </div>
+                    <div className="bg-slate-50 dark:bg-white/5 px-4 py-2 rounded-xl flex-1 border border-slate-100 dark:border-white/5">
+                      <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Announcement Date</div>
+                      <div className="text-sm font-semibold text-brand-navy dark:text-slate-200 flex items-center gap-2"><i className="fa-regular fa-calendar-check"></i> {req.announcementDate}</div>
+                    </div>
+                  </div>
+
+                  <div className="border-t border-slate-100 dark:border-white/5 pt-4">
+                    <h4 className="text-sm font-bold text-brand-navy dark:text-white mb-3">Received Quotes ({req.quotes.length})</h4>
+                    {req.quotes.length === 0 ? (
+                      <p className="text-sm text-slate-500 dark:text-slate-400 italic bg-slate-50 dark:bg-white/5 p-4 rounded-xl text-center border border-dashed border-slate-200 dark:border-white/10">Waiting for service providers to submit their bids...</p>
+                    ) : (
+                      <div className="space-y-3">
+                        {req.quotes.map((quote, idx) => (
+                          <div key={idx} className="flex justify-between items-center bg-slate-50 dark:bg-white/5 p-4 rounded-xl border border-slate-100 dark:border-white/5 hover:border-brand-teal/30 transition-colors">
+                            <div className="flex items-center gap-3">
+                               <div className="w-10 h-10 rounded-full bg-brand-teal/10 text-brand-teal flex items-center justify-center font-bold">{quote.name.charAt(0)}</div>
+                               <div>
+                                  <div className="font-semibold text-brand-navy dark:text-white text-sm">{quote.name}</div>
+                                  <div className="text-xs text-slate-500 line-clamp-1">{quote.message}</div>
+                               </div>
+                            </div>
+                            <div className="text-right flex flex-col items-end">
+                              <div className="font-bold text-brand-teal dark:text-brand-darkAccent text-lg">₹{quote.amount.toLocaleString()}</div>
+                              <button className="text-[10px] font-bold text-white bg-brand-navy dark:bg-slate-700 px-3 py-1.5 rounded-lg mt-1 hover:bg-brand-teal transition-colors shadow-sm">Award Project</button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="mt-5 pt-4 border-t border-slate-100 dark:border-white/5 flex justify-end gap-3">
+                    <button onClick={() => alert('Extend Deadlines modal coming soon')} className="px-4 py-2 rounded-xl font-semibold text-xs border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                      Extend Deadlines
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       );
     }
 
@@ -700,6 +805,109 @@ export default function ClientDashboard() {
           </div>
         </main>
       </div>
+      
+      {/* Post Task Modal */}
+      {isPostingModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white dark:bg-brand-darkCard rounded-3xl w-full max-w-xl overflow-hidden shadow-2xl border border-slate-200 dark:border-white/10 animate-fade-in-up flex flex-col max-h-[90vh]">
+            <div className="p-6 border-b border-slate-100 dark:border-white/5 flex justify-between items-center shrink-0">
+              <h2 className="text-xl font-bold text-brand-navy dark:text-white">Post a Requirement</h2>
+              <button onClick={() => setIsPostingModalOpen(false)} className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-white/5 text-slate-500 hover:text-brand-navy dark:hover:text-white transition-colors">
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            
+            <div className="p-6 space-y-5 overflow-y-auto">
+              <div>
+                <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Project Title</label>
+                <input 
+                  type="text" 
+                  value={postingData.title}
+                  onChange={(e) => setPostingData({...postingData, title: e.target.value})}
+                  placeholder="e.g. Need a Wedding Photographer"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 text-brand-navy dark:text-white focus:outline-none focus:border-brand-teal transition-colors"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Service Type</label>
+                  <select 
+                    value={postingData.serviceCategory}
+                    onChange={(e) => setPostingData({...postingData, serviceCategory: e.target.value})}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 text-brand-navy dark:text-white focus:outline-none focus:border-brand-teal transition-colors appearance-none"
+                  >
+                    <option value="driver">Driver</option>
+                    <option value="photographer">Photographer</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Location</label>
+                  <input 
+                    type="text" 
+                    value={postingData.location}
+                    onChange={(e) => setPostingData({...postingData, location: e.target.value})}
+                    placeholder="e.g. Bhubaneswar"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 text-brand-navy dark:text-white focus:outline-none focus:border-brand-teal transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Specific Requirements</label>
+                <textarea 
+                  rows="3"
+                  value={postingData.requirements}
+                  onChange={(e) => setPostingData({...postingData, requirements: e.target.value})}
+                  placeholder="e.g. Must have a Sedan car, or Must specialize in product photography..."
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 text-brand-navy dark:text-white focus:outline-none focus:border-brand-teal transition-colors resize-none"
+                ></textarea>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Last Bidding Date</label>
+                  <input 
+                    type="date" 
+                    value={postingData.biddingDeadline}
+                    onChange={(e) => setPostingData({...postingData, biddingDeadline: e.target.value})}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 text-brand-navy dark:text-white focus:outline-none focus:border-brand-teal transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Announcement Date</label>
+                  <input 
+                    type="date" 
+                    value={postingData.announcementDate}
+                    onChange={(e) => setPostingData({...postingData, announcementDate: e.target.value})}
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-black/20 border border-slate-200 dark:border-white/10 text-brand-navy dark:text-white focus:outline-none focus:border-brand-teal transition-colors"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 border-t border-slate-100 dark:border-white/5 flex gap-3 shrink-0 bg-slate-50 dark:bg-white/5">
+              <button onClick={() => setIsPostingModalOpen(false)} className="flex-1 py-3 rounded-xl font-bold text-sm bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-white/10 text-brand-navy dark:text-white hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                Cancel
+              </button>
+              <button 
+                onClick={() => {
+                  if(!postingData.title) return alert("Please enter a title");
+                  setProjectRequests([
+                    ...projectRequests, 
+                    { ...postingData, id: Date.now(), status: 'open', quotes: [] }
+                  ]);
+                  setIsPostingModalOpen(false);
+                  setPostingData({ title: '', serviceCategory: 'driver', location: '', requirements: '', biddingDeadline: '', announcementDate: '' });
+                }} 
+                className="flex-1 py-3 rounded-xl font-bold text-sm bg-brand-teal dark:bg-brand-darkAccent text-white dark:text-brand-darkBg hover:bg-opacity-90 transition-colors shadow-md shadow-brand-teal/20"
+              >
+                Post Requirement
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
