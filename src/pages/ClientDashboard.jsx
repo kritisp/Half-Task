@@ -15,12 +15,12 @@ const MOCK_DRIVERS = [
 
 // MOCK DATA: Photographers
 const MOCK_PHOTOGRAPHERS = [
-  { id: 1, name: "Arjun Verma", rating: 4.9, rate: 15000, rateType: "Per Event", specialty: "Wedding", equipment: "Sony A7IV, Drone", avatar: "A", campaigns: 42 },
-  { id: 2, name: "Sneha Rao", rating: 4.7, rate: 3000, rateType: "Hourly", specialty: "Product", equipment: "Canon R5, Studio Lights", avatar: "S", campaigns: 110 },
-  { id: 3, name: "Ravi Teja", rating: 4.5, rate: 8000, rateType: "Full Day", specialty: "Event", equipment: "Nikon Z8", avatar: "R", campaigns: 28 },
-  { id: 4, name: "Neha Gupta", rating: 4.8, rate: 25000, rateType: "Per Event", specialty: "Wedding", equipment: "Sony A7III, Gimbal", avatar: "N", campaigns: 65 },
+  { id: 1, name: "Arjun Verma", rating: 4.9, rate: 3000, rateType: "Per Event", specialty: "Wedding", equipment: "Sony A7IV, Drone", avatar: "A", campaigns: 42 },
+  { id: 2, name: "Sneha Rao", rating: 4.7, rate: 2000, rateType: "Hourly", specialty: "Product", equipment: "Canon R5, Studio Lights", avatar: "S", campaigns: 110 },
+  { id: 3, name: "Ravi Teja", rating: 4.5, rate: 2000, rateType: "Full Day", specialty: "Event", equipment: "Nikon Z8", avatar: "R", campaigns: 28 },
+  { id: 4, name: "Neha Gupta", rating: 4.8, rate: 5000, rateType: "Per Event", specialty: "Wedding", equipment: "Sony A7III, Gimbal", avatar: "N", campaigns: 65 },
   { id: 5, name: "Kunal Singh", rating: 4.6, rate: 2000, rateType: "Hourly", specialty: "Real Estate", equipment: "DJI Mavic 3, Canon 5D", avatar: "K", campaigns: 89 },
-  { id: 6, name: "Pooja Hegde", rating: 4.9, rate: 12000, rateType: "Full Day", specialty: "Fashion", equipment: "Canon R6 Mark II", avatar: "P", campaigns: 54 },
+  { id: 6, name: "Pooja Hegde", rating: 4.9, rate: 3000, rateType: "Full Day", specialty: "Fashion", equipment: "Canon R6 Mark II", avatar: "P", campaigns: 54 },
 ];
 
 export default function ClientDashboard() {

@@ -1,6 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function CreatorPage() {
+  const navigate = useNavigate();
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    // Simulate successful registration
+    navigate('/creator/dashboard');
+  };
+
   return (
     <div className="relative z-10 w-full min-h-screen flex flex-col items-center pt-10 pb-16 px-5">
       
@@ -30,7 +38,7 @@ export default function CreatorPage() {
               <p className="text-sm text-slate-500 dark:text-slate-300 transition-colors">Brands will see this when you bid on their campaigns</p>
           </header>
 
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleRegister} className="space-y-6">
 
               {/* ================= SECTION 1: ACCOUNT DETAILS ================= */}
               <section>

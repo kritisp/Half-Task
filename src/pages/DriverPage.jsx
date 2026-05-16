@@ -1,6 +1,26 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function DriverPage() {
+  const navigate = useNavigate();
+  const [isCityOpen, setIsCityOpen] = useState(false);
+  const [selectedCities, setSelectedCities] = useState([]);
+  
+  const CITIES = ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur", "Sambalpur", "Puri", "Balasore", "Bhadrak", "Baripada", "Jharsuguda", "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Chennai", "Kolkata", "Pune", "Ahmedabad", "Jaipur", "Surat"];
+
+  const toggleCity = (city) => {
+    if (selectedCities.includes(city)) {
+      setSelectedCities(selectedCities.filter(c => c !== city));
+    } else {
+      setSelectedCities([...selectedCities, city]);
+    }
+  };
+  const handleRegister = (e) => {
+    e.preventDefault();
+    // Simulate successful registration
+    navigate('/driver/dashboard');
+  };
+
   return (
     <div className="relative z-10 w-full min-h-screen flex flex-col items-center pt-10 pb-16 px-5">
       
@@ -30,7 +50,7 @@ export default function DriverPage() {
               <p className="text-sm text-slate-500 dark:text-slate-300 transition-colors">Customers will see this when you bid on driving requests</p>
           </header>
 
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleRegister} className="space-y-6">
 
               {/* ================= SECTION 1: ACCOUNT DETAILS ================= */}
               <section>
@@ -254,11 +274,49 @@ export default function DriverPage() {
                       </div>
 
                       <div>
-                          <label className="block text-xs font-bold text-brand-navy dark:text-slate-200 tracking-wider mb-2 uppercase transition-colors">Availability Range</label>
-                          <div className="flex flex-wrap gap-2">
-                              <button type="button" className="px-4 py-2 rounded-lg border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-xs font-medium text-slate-600 dark:text-slate-300 transition-all">Local Only</button>
-                              <button type="button" className="px-4 py-2 rounded-lg border border-brand-driverAccent bg-brand-driverAccent/10 text-brand-driverAccent dark:text-[#7dd3fc] text-xs font-bold transition-all">Odisha Wide</button>
-                              <button type="button" className="px-4 py-2 rounded-lg border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-xs font-medium text-slate-600 dark:text-slate-300 transition-all">Pan India</button>
+                          <label className="block text-xs font-bold text-brand-navy dark:text-slate-200 tracking-wider mb-2 uppercase transition-colors">Service Cities</label>
+                          <div className="relative">
+                              <button 
+                                  type="button" 
+                                  onClick={() => setIsCityOpen(!isCityOpen)}
+                                  className="w-full flex items-center justify-between bg-brand-inputBg dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-brand-navy dark:text-white text-sm transition-all hover:border-brand-driverAccent"
+                              >
+                                  <span className={selectedCities.length === 0 ? "text-slate-400" : "font-semibold truncate pr-4"}>
+                                      {selectedCities.length === 0 ? "Select Service Cities..." : selectedCities.join(", ")}
+                                  </span>
+                                  <i className={`fa-solid fa-chevron-down transition-transform duration-300 ${isCityOpen ? 'rotate-180' : ''}`}></i>
+                              </button>
+                              
+                              {/* Animated Dropdown Menu */}
+                              <div className={`absolute z-50 top-full left-0 right-0 mt-2 bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-white/10 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] overflow-hidden transition-all duration-300 transform origin-top ${isCityOpen ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0 pointer-events-none'}`}>
+                                  <div className="max-h-64 overflow-y-auto py-2 custom-scrollbar">
+                                      {/* Odisha Label */}
+                                      <div className="px-4 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-50 dark:bg-white/5">Odisha Cities</div>
+                                      {CITIES.slice(0, 10).map(city => (
+                                          <button 
+                                              key={city} type="button" 
+                                              onClick={() => toggleCity(city)}
+                                              className="w-full flex items-center justify-between px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
+                                          >
+                                              <span className={`transition-colors ${selectedCities.includes(city) ? 'text-brand-driverAccent font-bold' : 'text-brand-navy dark:text-slate-200'}`}>{city}</span>
+                                              {selectedCities.includes(city) && <i className="fa-solid fa-check text-brand-driverAccent"></i>}
+                                          </button>
+                                      ))}
+                                      
+                                      {/* India Label */}
+                                      <div className="px-4 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider bg-slate-50 dark:bg-white/5 mt-1">Famous Indian Cities</div>
+                                      {CITIES.slice(10).map(city => (
+                                          <button 
+                                              key={city} type="button" 
+                                              onClick={() => toggleCity(city)}
+                                              className="w-full flex items-center justify-between px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
+                                          >
+                                              <span className={`transition-colors ${selectedCities.includes(city) ? 'text-brand-driverAccent font-bold' : 'text-brand-navy dark:text-slate-200'}`}>{city}</span>
+                                              {selectedCities.includes(city) && <i className="fa-solid fa-check text-brand-driverAccent"></i>}
+                                          </button>
+                                      ))}
+                                  </div>
+                              </div>
                           </div>
                       </div>
                   </div>

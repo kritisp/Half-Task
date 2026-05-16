@@ -10,6 +10,9 @@ import CreatorPage from './pages/CreatorPage'
 import ClientPage from './pages/ClientPage'
 import ClientDashboard from './pages/ClientDashboard'
 import DriverProfile from './pages/DriverProfile'
+import CreatorDashboard from './pages/CreatorDashboard'
+import DriverDashboard from './pages/DriverDashboard'
+import PhotographerDashboard from './pages/PhotographerDashboard'
 
 function App() {
   const { pathname } = useLocation();
@@ -32,6 +35,9 @@ function App() {
           <Route path="/creator" element={<CreatorPage />} />
           <Route path="/client" element={<ClientPage />} />
           <Route path="/client/dashboard" element={<ClientDashboard />} />
+          <Route path="/creator/dashboard" element={<CreatorDashboard />} />
+          <Route path="/driver/dashboard" element={<DriverDashboard />} />
+          <Route path="/photographer/dashboard" element={<PhotographerDashboard />} />
           <Route path="/driver/profile" element={<DriverProfile />} />
         </Routes>
       </main>
