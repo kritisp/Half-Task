@@ -248,12 +248,16 @@ export default function CreatorDashboard() {
           </div>
           <div className="flex-1 overflow-y-auto py-6">
             <nav className="flex flex-col gap-1 px-4">
-              <button className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors shadow-sm w-full text-left bg-brand-creatorAccent text-white">
-                <i className="fa-solid fa-house w-5 text-center"></i>
+              <button 
+                onClick={() => { setCurrentView('bids'); setActiveTab('all'); }} 
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors w-full text-left ${activeTab !== 'find' ? 'bg-brand-creatorAccent text-white shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5'}`}>
+                <i className={`fa-solid fa-house w-5 text-center ${activeTab !== 'find' ? '' : 'text-brand-creatorAccent dark:text-[#a78bfa]'}`}></i>
                 Dashboard
               </button>
-              <button onClick={() => { setCurrentView('bids'); setActiveTab('find'); }} className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 font-medium text-sm transition-colors w-full text-left">
-                <i className="fa-solid fa-magnifying-glass w-5 text-center text-brand-creatorAccent dark:text-[#a78bfa]"></i>
+              <button 
+                onClick={() => { setCurrentView('bids'); setActiveTab('find'); }} 
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-colors w-full text-left ${activeTab === 'find' ? 'bg-brand-creatorAccent text-white shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5'}`}>
+                <i className={`fa-solid fa-magnifying-glass w-5 text-center ${activeTab === 'find' ? '' : 'text-brand-creatorAccent dark:text-[#a78bfa]'}`}></i>
                 Browse Campaigns
               </button>
               <button onClick={() => alert('Profile coming soon')} className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 font-medium text-sm transition-colors w-full text-left">
