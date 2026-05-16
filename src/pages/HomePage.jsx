@@ -29,77 +29,67 @@ export default function HomePage() {
             Connect directly with trusted service providers. Post a task, receive bids, pick the best one. No middlemen. No hidden fees.
           </p>
 
-          <div className="dual-card-container flex flex-col lg:flex-row gap-6 w-full max-w-5xl mx-auto animate-fade-in" style={{animationDelay: "0.3s"}}>
+          <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 w-full max-w-3xl mx-auto animate-fade-in px-4 relative z-10" style={{animationDelay: "0.3s"}}>
             
-            {/* LEFT CARD: CLIENT WORLD */}
-            <div className="dual-card client-card flex-1 bg-white dark:bg-brand-darkCard rounded-[2rem] p-10 flex flex-col text-left relative overflow-hidden group/btn border border-transparent dark:border-white/5 transition-colors duration-300 hover:z-20">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 dark:bg-blue-500/10 rounded-full blur-[80px] opacity-60 pointer-events-none transition-colors duration-300"></div>
-              
-              <div className="relative z-10 flex flex-col h-full items-center text-center">
-                <h3 className="text-2xl font-bold text-brand-dark dark:text-white mb-2 tracking-tight transition-colors duration-300">🚀 Post a Task</h3>
-                <p className="text-slate-500 dark:text-slate-300 text-sm mb-8 font-medium transition-colors duration-300">Find the right people for your work</p>
-                
-                <ul className="space-y-4 mb-10 text-sm text-slate-600 dark:text-slate-200 flex-1 text-left w-full max-w-[240px] mx-auto transition-colors duration-300">
-                  <li className="flex items-center gap-3">
-                    <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent transition-colors duration-300"></i>
-                    <span>Post requirements</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent transition-colors duration-300"></i>
-                    <span>Compare bids</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent transition-colors duration-300"></i>
-                    <span>Hire confidently</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent transition-colors duration-300"></i>
-                    <span>Manage everything securely</span>
-                  </li>
-                </ul>
-                
-                <Link to="/client" className="w-full max-w-[220px] mx-auto py-3.5 rounded-full bg-brand-teal dark:bg-brand-darkAccent text-white dark:text-brand-darkBg font-semibold text-sm transition-all hover:bg-brand-tealDark dark:hover:bg-teal-300 shadow-lg shadow-brand-teal/20 dark:shadow-brand-darkAccent/20 flex items-center justify-center gap-2 group-hover/btn:gap-3">
-                  Client/Business 
-                  <svg className="w-4 h-4 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </Link>
+            {/* LEFT CARD: HIRE */}
+            <div className="flex-1 bg-white dark:bg-brand-darkCard rounded-[2rem] p-10 flex flex-col items-center text-center border border-slate-200 dark:border-white/10 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-500/20 dark:to-blue-400/5 flex items-center justify-center mb-6 shadow-sm border border-blue-100/50 dark:border-blue-500/10">
+                <i className="fa-solid fa-user-tie text-3xl text-brand-navy dark:text-blue-400"></i>
               </div>
+              
+              <h3 className="text-2xl font-bold text-brand-navy dark:text-white mb-1 tracking-tight">Hire</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm mb-8">I want to get something done</p>
+              
+              <ul className="space-y-4 mb-10 text-sm text-slate-600 dark:text-slate-300 text-left w-full max-w-[220px]">
+                <li className="flex items-start gap-3">
+                  <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent mt-0.5"></i>
+                  <span>Post campaigns</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent mt-0.5"></i>
+                  <span>Book photographers & drivers</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent mt-0.5"></i>
+                  <span>Secure in-platform chat</span>
+                </li>
+              </ul>
+              
+              <Link to="/client" className="mt-auto w-full max-w-[200px] py-3 rounded-full bg-brand-teal dark:bg-brand-darkAccent text-white dark:text-brand-darkBg font-bold text-sm transition-all hover:bg-brand-tealDark shadow-lg shadow-brand-teal/20 flex items-center justify-center gap-2 group">
+                Get Started <i className="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+              </Link>
             </div>
 
-            {/* RIGHT CARD: PROVIDER WORLD */}
-            <div className="dual-card provider-card flex-1 bg-white dark:bg-brand-darkCard rounded-[2rem] p-10 flex flex-col text-left relative overflow-hidden group/btn border border-transparent dark:border-white/5 transition-colors duration-300 hover:z-20">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-teal-50 dark:bg-teal-500/10 rounded-full blur-[80px] opacity-60 pointer-events-none transition-colors duration-300"></div>
+            {/* RIGHT CARD: WORK */}
+            <div className="flex-1 bg-white dark:bg-brand-darkCard rounded-[2rem] p-10 flex flex-col items-center text-center border-2 border-brand-teal dark:border-brand-darkAccent shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-full h-1.5 bg-brand-teal dark:bg-brand-darkAccent"></div>
               
-              <div className="relative z-10 flex flex-col h-full items-center text-center">
-                <h3 className="text-2xl font-bold text-brand-dark dark:text-white mb-2 tracking-tight transition-colors duration-300">📈 Grow with Tasks</h3>
-                <p className="text-slate-500 dark:text-slate-300 text-sm mb-8 font-medium transition-colors duration-300">Turn your skills into opportunities</p>
-                
-                <ul className="space-y-4 mb-10 text-sm text-slate-600 dark:text-slate-200 flex-1 text-left w-full max-w-[240px] mx-auto transition-colors duration-300">
-                  <li className="flex items-center gap-3">
-                    <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent transition-colors duration-300"></i>
-                    <span>Discover client requirements</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent transition-colors duration-300"></i>
-                    <span>Bid on projects</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent transition-colors duration-300"></i>
-                    <span>Build your reputation</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent transition-colors duration-300"></i>
-                    <span>Grow your network</span>
-                  </li>
-                </ul>
-                
-                {/* Updated Button to redirect to /service */}
-                <Link to="/service" className="w-full max-w-[220px] mx-auto py-3.5 rounded-full bg-white dark:bg-transparent border-2 border-brand-teal dark:border-brand-darkAccent text-brand-teal dark:text-brand-darkAccent font-semibold text-sm transition-all hover:bg-brand-teal dark:hover:bg-brand-darkAccent hover:text-white dark:hover:text-brand-darkBg flex items-center justify-center gap-2 group-hover/btn:gap-3">
-                  Continue as Provider 
-                  <svg className="w-4 h-4 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </Link>
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-orange-500/20 dark:to-orange-400/5 flex items-center justify-center mb-6 shadow-sm border border-orange-100 dark:border-orange-500/10">
+                <i className="fa-solid fa-bolt text-3xl text-orange-500"></i>
               </div>
+              
+              <h3 className="text-2xl font-bold text-brand-navy dark:text-white mb-1 tracking-tight">Work</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm mb-8">I have skills to offer</p>
+              
+              <ul className="space-y-4 mb-10 text-sm text-slate-600 dark:text-slate-300 text-left w-full max-w-[220px]">
+                <li className="flex items-start gap-3">
+                  <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent mt-0.5"></i>
+                  <span>Browse & bid on work</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent mt-0.5"></i>
+                  <span>Set your own price</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <i className="fa-solid fa-check text-brand-teal dark:text-brand-darkAccent mt-0.5"></i>
+                  <span>Build your portfolio</span>
+                </li>
+              </ul>
+              
+              <Link to="/service" className="mt-auto w-full max-w-[200px] py-3 rounded-full bg-white dark:bg-brand-darkCard border-2 border-brand-teal dark:border-brand-darkAccent text-brand-teal dark:text-brand-darkAccent font-bold text-sm transition-all hover:bg-brand-teal hover:text-white dark:hover:bg-brand-darkAccent dark:hover:text-brand-darkBg flex items-center justify-center gap-2 group-hover:shadow-lg shadow-brand-teal/20">
+                Join Now <i className="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+              </Link>
             </div>
-
           </div>
 
           <div className="mt-8 text-slate-500 dark:text-slate-300 text-sm animate-fade-in transition-colors duration-300" style={{animationDelay: "0.4s"}}>
