@@ -36,7 +36,7 @@ export default function HomePage() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 dark:bg-blue-500/10 rounded-full blur-[80px] opacity-60 pointer-events-none transition-colors duration-300"></div>
               
               <div className="relative z-10 flex flex-col h-full items-center text-center">
-                <h3 className="text-2xl font-bold text-brand-dark dark:text-white mb-2 tracking-tight transition-colors duration-300">🚀 Start a Task</h3>
+                <h3 className="text-2xl font-bold text-brand-dark dark:text-white mb-2 tracking-tight transition-colors duration-300">🚀 Post a Task</h3>
                 <p className="text-slate-500 dark:text-slate-300 text-sm mb-8 font-medium transition-colors duration-300">Find the right people for your work</p>
                 
                 <ul className="space-y-4 mb-10 text-sm text-slate-600 dark:text-slate-200 flex-1 text-left w-full max-w-[240px] mx-auto transition-colors duration-300">
@@ -59,7 +59,7 @@ export default function HomePage() {
                 </ul>
                 
                 <Link to="/client" className="w-full max-w-[220px] mx-auto py-3.5 rounded-full bg-brand-teal dark:bg-brand-darkAccent text-white dark:text-brand-darkBg font-semibold text-sm transition-all hover:bg-brand-tealDark dark:hover:bg-teal-300 shadow-lg shadow-brand-teal/20 dark:shadow-brand-darkAccent/20 flex items-center justify-center gap-2 group-hover/btn:gap-3">
-                  Continue as Client 
+                  Client/Business 
                   <svg className="w-4 h-4 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </Link>
               </div>
